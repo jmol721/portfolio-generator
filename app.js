@@ -1,27 +1,23 @@
-const fs = require('fs');
+const inquirer = require('inquirer');
 
-const generatePage = require('./src/page-template');
+inquirer
+    .prompt([
+        {
+        type: 'input',
+        name: 'name',
+        message: 'What is your name?'
+        }
+    ])
+    .then(answers => console.log(answers));
 
-const profileDataArgs = process.argv.slice(2);
+// const fs = require('fs');
 
-const [name, github] = profileDataArgs;
+// const generatePage = require('./src/page-template');
 
-fs.writeFile('index.html', generatePage(name, github), err => {
-    if (err) throw err;
+// const pageHTML = generatePage(name,github);
 
-    console.log('Portfolio complete! Check out index.html to see the output!');
-});
+// fs.writeFile('./index.html', pageHTML, err => {
+//     if (err) throw err;
 
-// const printProfileData = profileDataArr => {
-//     //This...
-//     for (let i = 0; i < profileDataArr.length; i += 1) {
-//         console.log(profileDataArr[i]);
-//     }
-
-//     console.log('================');
-
-//     //Is the same as this...
-//     profileDataArr.forEach(profileItem => console.log(profileItem));
-// };
-
-// printProfileData(profileDataArgs);
+//     console.log('Portfolio complete! Check out index.html to see the output!');
+// });
